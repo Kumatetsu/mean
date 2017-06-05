@@ -4,6 +4,7 @@ import { MeanMaterialModule }  from '../../mean-material.module';
 import { CaseService }         from '../../services/case.service';
 import { ElasticService }      from '../../services/elastic.service';
 import { ErrorHandlerService } from '../../services/error-handler.service';
+import { SebmGoogleMap, SebmGoogleMapMarker } from 'angular2-google-maps/core';
 
 @Component({
     selector:    'cases',
@@ -14,6 +15,9 @@ import { ErrorHandlerService } from '../../services/error-handler.service';
 export class CasesComponent implements OnInit {
     public cases:             Case[]
     public properties:        Array<String>
+    public p: number = 1;
+    lat: number = 42.28598136;
+  lng: number = -71.14732954;
 
 
     constructor(
@@ -24,7 +28,7 @@ export class CasesComponent implements OnInit {
 
     getCases(): void {
         this.CaseService.getCases()
-            .then(cases => this.cases = cases)
+            .then(cases => {this.cases = cases; console.log(cases[0].location.split(/([\d.-]{11,12})[^()]/))})
             .catch(this.errorHandler.handlePromise)
     }
 

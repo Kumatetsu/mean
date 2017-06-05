@@ -34,6 +34,8 @@ import { PropertiesResolver }      from './services/propertiesResolver.service';
 import { StatusPipe }              from './pipes/status.component';
 import { AuthGuard }               from './guards/auth.guard';
 import { RoleGuard }               from './guards/role.guard';
+import {NgxPaginationModule}       from 'ngx-pagination';
+import { AgmCoreModule }           from 'angular2-google-maps/core';
 
 @NgModule({
   imports: [
@@ -43,6 +45,10 @@ import { RoleGuard }               from './guards/role.guard';
     HttpModule,
     MeanRoutingModule,
     MeanMaterialModule,
+    NgxPaginationModule,
+    AgmCoreModule.forRoot({
+        apiKey: 'AIzaSyCMahLE0xsZwHbEGOQ9iYVw1IMytXXUnCM'
+    })
   ],
   declarations: [
     MeanComponent,
